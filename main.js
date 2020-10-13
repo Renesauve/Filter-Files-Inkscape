@@ -12,7 +12,7 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
     const file = !!files && files?.[i];
 
     if (file) {
-      const loadingFile = await new Promise((resolve, reject) => {
+      await new Promise((resolve, reject) => {
         globalShortcut.register("V", async () => {
           robot.mouseClick();
           robot.keyTap("R", ["control", "shift"]);
@@ -23,6 +23,7 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
 
         shell.openPath(currentPath + "/" + file.name + "/");
       });
+
       globalShortcut.unregisterAll();
       if (i < files.length - 1) {
         handleFile(i + 1);
