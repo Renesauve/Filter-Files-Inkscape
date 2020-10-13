@@ -12,6 +12,7 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
     const file = !!files && files?.[i];
 
     if (file) {
+      console.log(i);
       await new Promise((resolve, reject) => {
         globalShortcut.register("V", async () => {
           robot.mouseClick();
