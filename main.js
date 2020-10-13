@@ -41,6 +41,7 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
           robot.keyTap("down");
           robot.keyTap("enter");
           robot.keyTap("escape");
+          robot.keyTap("-", "control");
           robot.keyTap("R", ["control", "shift"]);
           robot.keyTap("S", "control");
           robot.keyTap("Q", "control");
