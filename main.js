@@ -52,7 +52,7 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
         });
 
         shell.openPath(currentPath + "/" + file.name + "/");
-        robot.setKeyboardDelay(3000);
+        robot.setKeyboardDelay(6000);
         robot.keyTap("M");
         robot.setKeyboardDelay(0);
 
