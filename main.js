@@ -37,17 +37,23 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
 
           if (path.length > 1 || path.length <= 0) {
             shell.beep();
-            console.log("There are " + (path.length - 1) + " extra images");
-            console.log("Attention required, please delete extra images");
-            globalShortcut.register("N", async () => {
-              robotController();
-              resolve(true);
-              console.log("Images fixed");
-            });
+            console.log("There are " + (path.length - 1) + " extra paths");
+            console.log(
+              "Attention required, please delete extra SVGS in openened file and then press N"
+            );
+            console.log("Waiting...");
           } else {
             globalShortcut.register("M", async () => {
               robotController();
               resolve(true);
+            });
+          }
+          if (path.length == 1) {
+            globalShortcut.register("N", async () => {
+              robot.keyTap("S", "control");
+              robotController();
+              resolve(true);
+              console.log("Checking...");
               console.log("-------->Completed<-------------");
             });
           }
