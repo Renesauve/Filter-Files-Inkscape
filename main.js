@@ -11,7 +11,7 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
 ) {
   // REMEMBER THE INDEX VALUE INCASE TERMINAL CLOSES
   //----------------------------v-------------------
-  const handleFile = async (i = 0) => {
+  const handleFile = async (i = 385) => {
     const file = !!files && files?.[i];
 
     if (file) {
@@ -37,6 +37,14 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
 
           if (path.length > 1 || path.length <= 0) {
             shell.beep();
+            
+            globalShortcut.register("N", async () => {
+              robot.keyTap("S", "control");
+              robotController();
+              resolve(true);
+              console.log("Checking...");
+              console.log("-------->Completed<m-------------");
+            });
             console.log("There are " + (path.length - 1) + " extra paths");
             console.log(
               "Attention required, please delete extra SVGS in openened file and then press N"
@@ -48,15 +56,7 @@ fs.readdir(currentPath, {encoding: "utf8", withFileTypes: true}, function (
               resolve(true);
             });
           }
-          if (path.length == 1) {
-            globalShortcut.register("N", async () => {
-              robot.keyTap("S", "control");
-              robotController();
-              resolve(true);
-              console.log("Checking...");
-              console.log("-------->Completed<-------------");
-            });
-          }
+      
 
           robot.setKeyboardDelay(4000);
           robot.keyTap("M");
